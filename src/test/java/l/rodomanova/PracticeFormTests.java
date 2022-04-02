@@ -54,7 +54,9 @@ public class PracticeFormTests {
         $("hobbies-checkbox").setValue("Reading");
         $("#uploadPicture").uploadFile(new File("https://klike.net/1870-milye-kartinki-40-foto.html"));
         $("#currentAddress").setValue("Moscow");
-        //$("#stateCity-Wrapper").setValue("NRC","Delhi");
+        $("#stateCity-Wrapper").click();
+        $("[class=css-1wa3eu0-placeholder]").setValue("NCR");
+        $("[class=css-1hwfws3]").setValue("Delhi");
         $("#submit").click();
 
     }
