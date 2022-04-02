@@ -6,7 +6,7 @@ import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class SimpleTest {
+public class Junit5Tests {
 
     @BeforeAll
     static void initDB() {
