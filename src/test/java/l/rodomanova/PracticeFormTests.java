@@ -17,7 +17,6 @@ public class PracticeFormTests {
 
     @BeforeAll
     static void setUp() {
-        Configuration.baseUrl = "https://demoqa.com/automation-practice-form";
         Configuration.browserSize = "1920x1080";
     }
 
