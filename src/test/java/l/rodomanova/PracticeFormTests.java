@@ -2,62 +2,52 @@ package l.rodomanova;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 
 import java.io.File;
 
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.getSelectedRadio;
+import static com.codeborne.selenide.files.DownloadActions.click;
 
 public class PracticeFormTests {
 
     @BeforeAll
-    static void initDB() {
-        System.out.println("### @BeforeAll");
-    }
     static void setUp() {
         Configuration.baseUrl = "https://demoqa.com/automation-practice-form";
         Configuration.browserSize = "1920x1080";
     }
 
-    @BeforeEach
-    void openDemoqaPage() {
-        System.out.println("### @BeforeEach");
-        Selenide.open("https://demoqa.com/automation-practice-form");
-
-
-    }
-
-    @AfterEach
-    void close() {
-        System.out.println("### @AfterEach");
-        WebDriverRunner.closeWindow();
-    }
-
-    @AfterAll
-    static void cleanDB() {
-        System.out.println("### @AfterAll");
-    }
 
     @Test
     void fillFormTest() {
+        Selenide.open("https://demoqa.com/automation-practice-form");
         $(By.cssSelector("#firstName")).setValue("Maria");
         $("#lastName").setValue("Petrova");
         $("#userEmail").setValue("Petrova@mail.com");
-        $("[class=col-md-3 col-sm-12]").selectRadio("Female");
+        $(byText("Female")).click();
         $("#userNumber").setValue("7000000000");
-        $("#dateOfBirthInput").setValue("10 Oct 1990");
-        $("#subjectsContainer").setValue("English");
-        $("hobbies-checkbox").setValue("Reading");
-        $("#uploadPicture").uploadFile(new File("https://klike.net/1870-milye-kartinki-40-foto.html"));
+        $("#dateOfBirthInput").click();
+        $("[class=react-datepicker__year-select]").selectOption("1990");
+        $("[class=react-datepicker__month-select]").selectOption("October");
+        $(byText("10")).click();
+        $("#subjectsInput").setValue("E").pressEnter();
+        $(byText("Reading")).click();
+        $("#uploadPicture").uploadFile(new File("img/Cat.jpg"));
         $("#currentAddress").setValue("Moscow");
-        $("#stateCity-Wrapper").click();
-        $("[class=css-1wa3eu0-placeholder]").setValue("NCR");
-        $("[class=css-1hwfws3]").setValue("Delhi");
+        $("#state").click();
+        $(byText("NCR")).click();
+        $("#city").click();
+        $(byText("Delhi")).click();
         $("#submit").click();
+
+        $("[class=modal-open]").shouldHave(text("Maria"), text("Petrova"),
+                text("Petrova@mail.com"), text("Female"), text("7000000000"),
+                text("10 October,1990"), text("English"), text("Reading"),
+                text("Cat.jpg"), text("Moscow"), text("NCR Delhi"));
 
     }
 }
