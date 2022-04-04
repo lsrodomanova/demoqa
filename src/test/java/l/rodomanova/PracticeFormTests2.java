@@ -2,7 +2,8 @@ package l.rodomanova;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import java.io.File;
@@ -11,7 +12,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class PracticeFormTests {
+public class PracticeFormTests2 {
 
     @BeforeAll
     static void setUp() {
@@ -22,23 +23,23 @@ public class PracticeFormTests {
     @Test
     void fillFormTest() {
         Selenide.open("https://demoqa.com/automation-practice-form");
-        $(By.cssSelector("#firstName")).setValue("Maria");
+        $("#firstName").setValue("Maria");
         $("#lastName").setValue("Petrova");
         $("#userEmail").setValue("Petrova@mail.com");
-        $(byText("Female")).click();
+        $("#genterWrapper").find(byText("Female")).click();
         $("#userNumber").setValue("7000000000");
         $("#dateOfBirthInput").click();
         $("[class=react-datepicker__year-select]").selectOption("1990");
         $("[class=react-datepicker__month-select]").selectOption("October");
         $(byText("10")).click();
         $("#subjectsInput").setValue("E").pressEnter();
-        $(byText("Reading")).click();
-        $("#uploadPicture").uploadFile(new File("src/test/resources/Cat.jpg"));
+        $("#hobbiesWrapper").find(byText("Reading")).click();
+        $("#uploadPicture").uploadFromClasspath("Cat.jpg");
         $("#currentAddress").setValue("Moscow");
         $("#state").click();
-        $(byText("NCR")).click();
+        $("#stateCity-wrapper").find(byText("NCR")).click();
         $("#city").click();
-        $(byText("Delhi")).click();
+        $("#stateCity-wrapper").find(byText("Delhi")).click();
         $("#submit").click();
 
         $("[class=modal-open]").shouldHave(text("Maria"), text("Petrova"),
