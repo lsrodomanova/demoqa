@@ -21,6 +21,7 @@ public class PracticeFormTests2 {
     @Test
     void fillFormTest() {
         Selenide.open("https://demoqa.com/automation-practice-form");
+        Selenide.zoom(0.75);
         $("#firstName").setValue("Maria");
         $("#lastName").setValue("Petrova");
         $("#userEmail").setValue("Petrova@mail.com");
