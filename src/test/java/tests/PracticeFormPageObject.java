@@ -1,16 +1,9 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.github.javafaker.Faker;
-import com.github.javafaker.PhoneNumber;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
 
 public class PracticeFormPageObject {
 
@@ -28,15 +21,15 @@ public class PracticeFormPageObject {
                 .setFirstName()
                 .setLastName()
                 .setUserEmail()
-                .setGender("Female")
+                .setGender()
                 .setUserNumber()
                 .setBirthDay()
                 .setSubject()
-                .setHobby("Reading")
+                .setHobby()
                 .uploadPicture()
                 .setAddress()
-                .setState("NCR")
-                .setCity("Delhi")
+                .setState()
+                .setCity()
                 .submit()
                 .checkResult();
 

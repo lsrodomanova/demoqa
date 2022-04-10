@@ -14,7 +14,18 @@ public class RegistrationFormPage {
             lastName=faker.name().lastName(),
             userEmail=faker.internet().emailAddress(),
             currentAddress=faker.address().fullAddress(),
-            userNumber=faker.numerify("##########");
+            userNumber=faker.numerify("##########"),
+            year="1990",
+            month="October",
+            day="10",
+            gender= "Female",
+            hobby="Reading",
+            picture="Cat.jpg",
+            subject="E",
+            state="NCR",
+            city="Delhi",
+            lang="English";
+
 
     public RegistrationFormPage openPage() {
         Selenide.open("https://demoqa.com/automation-practice-form");
@@ -38,8 +49,8 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage setGender(String value) {
-        $("#genterWrapper").find(byText(value)).click();
+    public RegistrationFormPage setGender() {
+        $("#genterWrapper").find(byText(gender)).click();
         return this;
     }
 
@@ -50,24 +61,24 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage setBirthDay() {
         $("#dateOfBirthInput").click();
-        $("[class=react-datepicker__year-select]").selectOption("1990");
-        $("[class=react-datepicker__month-select]").selectOption("October");
-        $(byText("10")).click();
+        $("[class=react-datepicker__year-select]").selectOption(year);
+        $("[class=react-datepicker__month-select]").selectOption(month);
+        $(byText(day)).click();
         return this;
     }
 
     public RegistrationFormPage setSubject() {
-        $("#subjectsInput").setValue("E").pressEnter();
+        $("#subjectsInput").setValue(subject).pressEnter();
         return this;
     }
 
-    public RegistrationFormPage setHobby(String value) {
-        $("#hobbiesWrapper").find(byText(value)).click();
+    public RegistrationFormPage setHobby() {
+        $("#hobbiesWrapper").find(byText(hobby)).click();
         return this;
     }
 
     public RegistrationFormPage uploadPicture() {
-        $("#uploadPicture").uploadFromClasspath("Cat.jpg");
+        $("#uploadPicture").uploadFromClasspath(picture);
         return this;
     }
 
@@ -76,15 +87,15 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage setState(String value) {
+    public RegistrationFormPage setState() {
         $("#state").click();
-        $("#stateCity-wrapper").find(byText(value)).click();
+        $("#stateCity-wrapper").find(byText(state)).click();
         return this;
     }
 
-    public RegistrationFormPage setCity(String value) {
+    public RegistrationFormPage setCity() {
         $("#city").click();
-        $("#stateCity-wrapper").find(byText(value)).click();
+        $("#stateCity-wrapper").find(byText(city)).click();
         return this;
     }
 
@@ -95,8 +106,8 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage checkResult() {
         $("[class=modal-open]").shouldHave(text(firstName),text(lastName), text(userEmail), text(userNumber),
-                text(currentAddress), text("Female"), text("10 October,1990"), text("English"), text("Reading"),
-                text("Cat.jpg"), text("NCR Delhi"));
+                text(currentAddress), text(gender), text(day+" "+month+","+year), text(lang), text(hobby),
+                text(picture), text(state+" "+city));
         return this;
     }
 }
