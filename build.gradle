@@ -57,5 +57,6 @@ tasks.withType(Test) {
 task demoqa_tests(type: Test) {
     useJUnitPlatform{
         includeTags "demoqa"
+        excludeTags "J5", "PO", "simple", "simpletest"
     }
 }

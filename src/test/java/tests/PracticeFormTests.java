@@ -11,6 +11,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
+@Tag("simple")
 public class PracticeFormTests {
 
     @BeforeAll
