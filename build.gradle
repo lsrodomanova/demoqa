@@ -8,9 +8,9 @@ repositories {
 }
 
 def allureVersion = "2.17.3",
-    selenideVersion = "6.4.0",
+    selenideVersion = "6.3.5",
     junitVersion = "5.8.2",
-    slf4jVersion = "1.7.32"
+    slf4jVersion = "1.7.36"
 
 allure {
     report {
@@ -57,6 +57,5 @@ tasks.withType(Test) {
 task demoqa_tests(type: Test) {
     useJUnitPlatform{
         includeTags "demoqa"
-//        excludeTags "simple"
     }
 }
