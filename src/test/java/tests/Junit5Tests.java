@@ -4,7 +4,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.*;
 
-import static com.codeborne.selenide.Selenide.open;
+
 
 
 public class Junit5Tests {
