@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-@Tag("simple")
+
 public class PracticeFormTests {
 
     @BeforeAll
@@ -23,6 +23,7 @@ public class PracticeFormTests {
     @Test
     void fillFormTest() {
         Selenide.open("https://demoqa.com/automation-practice-form");
+        Selenide.zoom(0.75);
         $(By.cssSelector("#firstName")).setValue("Maria");
         $("#lastName").setValue("Petrova");
         $("#userEmail").setValue("Petrova@mail.com");

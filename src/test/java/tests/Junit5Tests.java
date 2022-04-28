@@ -6,7 +6,7 @@ import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Selenide.open;
 
-@Tag("J5")
+
 public class Junit5Tests {
 
     @BeforeAll
